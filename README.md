@@ -4,7 +4,7 @@ Sanber63-Cypress-Kelompok9
 Nama Lengkap - Nama github
 
 1. 
-2. 
+2. Geri Apta Maulana - gerimaulana
 3. Tifanny TN - tifannyy
 4. 
 5. Salsabila Bahhas - salsabilabhs
