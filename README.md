@@ -3,10 +3,6 @@ Sanber63-Cypress-Kelompok9
 
 Nama Lengkap - Nama github 
 1. 
-2. 
-3. 
-4. 
-5. Salsabila Bahhas - salsabilabhs
 2. Geri Apta Maulana - gerimaulana
 3. Tifanny TN - tifannyy
 4. Moch Ghibran Jhi S - ghibranjs
