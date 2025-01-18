@@ -2,11 +2,11 @@ import createAccPageCy from "../../support/pageObjectModel/createAccPage.cy"
 
 describe('Magento Website - Create an Account Scenario', () => {
 
-  function randomEmail(){
-    const randomString = Math.random().toString(36).substring(2,9)
-    const email = randomString + "@mail.com"
-    return email
-  }
+  // function randomEmail(){
+  //   const randomString = Math.random().toString(36).substring(2,9)
+  //   const email = randomString + "@mail.com"
+  //   return email
+  // }
 
   beforeEach(() => {
     cy.visit('')
@@ -14,69 +14,34 @@ describe('Magento Website - Create an Account Scenario', () => {
   })
 
   //Positive Test
-  it.skip('Create an Account success', () => {
-    let useremail = randomEmail()
-    cy.get('.panel.wrapper > .panel').contains('Create an Account').click()
-    cy.get('#firstname').type('Ana')
-    cy.get('#lastname').type('Rubina')
-    cy.get('#email_address').type(useremail)
-    cy.get('#password').type('Sanbercode00')
-    cy.get('#password-confirmation').type('Sanbercode00')
-    cy.get('#form-validate > .actions-toolbar > div.primary > .action').click()
-    cy.get(':nth-child(2) > .greet > .logged-in').should('have.text', 'Welcome, Ana Rubina!' )
-    cy.get('.message-success > div').should('have.text','Thank you for registering with Main Website Store.')
+  it('Create an Account success', () => {
+    cy.CreateAccount('Ana','Rubina','Sanbercode00','Sanbercode00')
+    createAccPageCy.verifyWelcomeName('Welcome, Ana Rubina!')
+    createAccPageCy.verifyWelcomeText('Thank you for registering with Main Website Store.')
   })
 
   it('Create an Account success with number in firstname ', () => {
-    let useremail = randomEmail()
-    cy.get('.panel.wrapper > .panel').contains('Create an Account').click()
-    cy.get('#firstname').type('1998000')
-    cy.get('#lastname').type('Rubina')
-    cy.get('#email_address').type(useremail)
-    cy.get('#password').type('Sanbercode00')
-    cy.get('#password-confirmation').type('Sanbercode00')
-    cy.get('#form-validate > .actions-toolbar > div.primary > .action').click()
-    cy.get(':nth-child(2) > .greet > .logged-in').should('have.text', 'Welcome, 1998000 Rubina!' )
-    cy.get('.message-success > div').should('have.text','Thank you for registering with Main Website Store.')
+    cy.CreateAccount('1998000','Rubina','Sanbercode00','Sanbercode00')
+    createAccPageCy.verifyWelcomeName('Welcome, 1998000 Rubina!')
+    createAccPageCy.verifyWelcomeText('Thank you for registering with Main Website Store.')
   })
 
   it('Create an Account success with mix alphabet & number in firstname ', () => {
-    let useremail = randomEmail()
-    cy.get('.panel.wrapper > .panel').contains('Create an Account').click()
-    cy.get('#firstname').type('Ana1998')
-    cy.get('#lastname').type('Rubina')
-    cy.get('#email_address').type(useremail)
-    cy.get('#password').type('Sanbercode00')
-    cy.get('#password-confirmation').type('Sanbercode00')
-    cy.get('#form-validate > .actions-toolbar > div.primary > .action').click()
-    cy.get(':nth-child(2) > .greet > .logged-in').should('have.text', 'Welcome, Ana1998 Rubina!' )
-    cy.get('.message-success > div').should('have.text','Thank you for registering with Main Website Store.')
+    cy.CreateAccount('Ana1998','Rubina','Sanbercode00','Sanbercode00')
+    createAccPageCy.verifyWelcomeName('Welcome, Ana1998 Rubina!')
+    createAccPageCy.verifyWelcomeText('Thank you for registering with Main Website Store.')
   })
 
   it('Create an Account success with number in lastname ', () => {
-    let useremail = randomEmail()
-    cy.get('.panel.wrapper > .panel').contains('Create an Account').click()
-    cy.get('#firstname').type('Ana')
-    cy.get('#lastname').type('15045')
-    cy.get('#email_address').type(useremail)
-    cy.get('#password').type('Sanbercode00')
-    cy.get('#password-confirmation').type('Sanbercode00')
-    cy.get('#form-validate > .actions-toolbar > div.primary > .action').click()
-    cy.get(':nth-child(2) > .greet > .logged-in').should('have.text', 'Welcome, Ana 15045!' )
-    cy.get('.message-success > div').should('have.text','Thank you for registering with Main Website Store.')
+    cy.CreateAccount('Ana','15045','Sanbercode00','Sanbercode00')
+    createAccPageCy.verifyWelcomeName('Welcome, Ana 15045!')
+    createAccPageCy.verifyWelcomeText('Thank you for registering with Main Website Store.')
   })
 
   it('Create an Account success with mix alphabet & number in lastname ', () => {
-    let useremail = randomEmail()
-    cy.get('.panel.wrapper > .panel').contains('Create an Account').click()
-    cy.get('#firstname').type('Ana')
-    cy.get('#lastname').type('Rubina20')
-    cy.get('#email_address').type(useremail)
-    cy.get('#password').type('Sanbercode00')
-    cy.get('#password-confirmation').type('Sanbercode00')
-    cy.get('#form-validate > .actions-toolbar > div.primary > .action').click()
-    cy.get(':nth-child(2) > .greet > .logged-in').should('have.text', 'Welcome, Ana Rubina20!' )
-    cy.get('.message-success > div').should('have.text','Thank you for registering with Main Website Store.')
+    cy.CreateAccount('Ana','Rubina20','Sanbercode00','Sanbercode00')
+    createAccPageCy.verifyWelcomeName('Welcome, Ana Rubina20!')
+    createAccPageCy.verifyWelcomeText('Thank you for registering with Main Website Store.')
   })
 
   it('Create an Account success with spaces in the middle character of password ', () => {
@@ -279,7 +244,7 @@ it('Create an Account failed with empty password', () => {
 
   })
 
-  it.only('Create an Accoun with the same email is not allowed ', () => {
+  it('Create an Accoun with the same email is not allowed ', () => {
     cy.get('.panel.wrapper > .panel').contains('Create an Account').click()
     cy.get('#firstname').type('Ana')
     cy.get('#lastname').type('Rubina')
