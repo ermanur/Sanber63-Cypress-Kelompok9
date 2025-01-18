@@ -1,0 +1,8 @@
+{
+    "validEmail": "Rubina1@mail.com",
+    "validPassword": "Sanbercode00",
+    "specialCharEmail": "user_123@mail.com",
+    "specialCharPassword": "pass@123",
+    "wrongEmail": "wrong@mail.com",
+    "wrongPassword": "wrong_password"
+  }
