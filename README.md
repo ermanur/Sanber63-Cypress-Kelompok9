@@ -5,7 +5,7 @@ Nama Lengkap - Nama github
 
 1. 
 2. 
-3.
+3. Tifanny TN - tifannyy
 4.
 5.Salsabila Bahhas - salsabilabhs
 6. Malia Elisiana - itsmeelsy
