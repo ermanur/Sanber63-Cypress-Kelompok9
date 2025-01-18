@@ -17,4 +17,4 @@ Pembagian Tugas :
 - Login (Geri)
 - My Account > Edit Account Information & Edit Address (Fanny)
 - Choose products and Update Shopping Cart (... , ...)
-- Proceed to Checkout (Salsabila , ...)
+- Proceed to Checkout (Salsabila , ...) 
