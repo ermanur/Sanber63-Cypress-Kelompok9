@@ -5,13 +5,13 @@ Nama Lengkap - Nama github
 
 1. 
 2. 
-3.
-4.
-5.Salsabila Bahhas - salsabilabhs
+3. 
+4. 
+5. Salsabila Bahhas - salsabilabhs
 6. Malia Elisiana - itsmeelsy
 7.
 
-Pembagian Tugas
+Pembagian Tugas : 
 
 - Create an Account (Malia)
 - Login (Geri)
