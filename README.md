@@ -6,8 +6,8 @@ Nama Lengkap - Nama github
 1. 
 2. 
 3. Tifanny TN - tifannyy
-4.
-5.Salsabila Bahhas - salsabilabhs
+4. 
+5. Salsabila Bahhas - salsabilabhs
 6. Malia Elisiana - itsmeelsy
 7.
 
@@ -17,4 +17,4 @@ Pembagian Tugas
 - Login (Geri)
 - My Account > Edit Account Information & Edit Address (Fanny)
 - Choose products and Update Shopping Cart (... , ...)
-- Proceed to Checkout (Salsabila , ...)
+- Proceed to Checkout (Salsabila, ...)
