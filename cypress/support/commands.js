@@ -42,4 +42,19 @@
 //         cy.url().should('include', '/checkout/#shipping')
 //         cy.wait(5000)
 
-
+//Create Account
+function randomEmail(){
+    const randomString = Math.random().toString(36).substring(2,9)
+    const email = randomString + "@mail.com"
+    return email
+  }
+Cypress.Commands.add('CreateAccount', (firstname, lastname, password, confirm_pass) => {
+    let useremail = randomEmail()
+    cy.get('.panel.wrapper > .panel').contains('Create an Account').click()
+    cy.get('#firstname').type(firstname)
+    cy.get('#lastname').type(lastname)
+    cy.get('#email_address').type(useremail)
+    cy.get('#password').type(password)
+    cy.get('#password-confirmation').type(confirm_pass)
+    cy.get('#form-validate > .actions-toolbar > div.primary > .action').click()
+    })
