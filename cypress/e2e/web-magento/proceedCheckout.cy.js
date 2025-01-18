@@ -1,5 +1,5 @@
 import detailPage from "../../support/element-pages/detailPage"
-import Shipping, { ship_bestway } from "../../support/element-pages/checkout-shippingPage"
+import Shipping from "../../support/element-pages/checkout-shippingPage"
 import Review_Payments from "../../support/element-pages/checkout-reviewPage"
 
 describe('proceed to checkout', () => {
@@ -21,7 +21,7 @@ describe('proceed to checkout', () => {
         cy.wait(5000)
   })
 
-  it('proceed to checkout - section Shipping - positive (doesnt have account)', () => {
+  it('proceed to checkout - positive (doesnt have account)', () => {
     cy.get(Shipping.emailaddress).type('lalamariella@email.com')
     cy.get(Shipping.firstname).type('Lala')
     cy.get(Shipping.lastname).type('Mariella')
@@ -70,7 +70,8 @@ describe('proceed to checkout', () => {
   // Click Place Order
     cy.get(Review_Payments.placeorder_btn).click()
     cy.url().should('include','/checkout/onepage/success/')
-    cy.get(Review_Payments.placeorder_success_msg).should('have.text', 'Thank you for your purchase!')
+    cy.get(Review_Payments.placeorder_success_msg)
+    .should('have.text', 'Thank you for your purchase!')
   })
 
   it('proceed to checkout - positive (best way)', () => {
