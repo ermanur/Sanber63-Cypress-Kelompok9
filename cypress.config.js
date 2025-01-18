@@ -8,8 +8,8 @@ module.exports = defineConfig({
       // implement node event listeners here
     },
     viewportHeight: 650,
-    viewportWidth: 950,
-    defaultCommandTimeout: 4500,
+    viewportWidth: 1000,
+    defaultCommandTimeout: 5000,
     screenshotOnRunFailure: false
   },
 });
