@@ -41,3 +41,5 @@
 //         cy.get(detailPage.proceedtocheckout_btn).click()
 //         cy.url().should('include', '/checkout/#shipping')
 //         cy.wait(5000)
+
+
