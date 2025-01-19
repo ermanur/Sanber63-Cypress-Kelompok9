@@ -1,17 +1,17 @@
 # Sanber63-Cypress-Kelompok9
 Sanber63-Cypress-Kelompok9
 
-Nama Lengkap - Nama github
 
+Nama Lengkap - Nama github 
 1. 
 2. Geri Apta Maulana - gerimaulana
 3. Tifanny TN - tifannyy
 4. Moch Ghibran Jhi S - ghibranjs
 5. Salsabila Bahhas - salsabilabhs
 6. Malia Elisiana - itsmeelsy
-7.
+7. 
 
-Pembagian Tugas
+Pembagian Tugas 
 
 - Create an Account (Malia)
 - Login (Geri)
