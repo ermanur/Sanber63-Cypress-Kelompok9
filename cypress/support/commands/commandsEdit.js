@@ -9,4 +9,3 @@ Cypress.Commands.add('signInCommands', () => {
     signIn.myAccount()
 });
 
-Cypress.Commands.add('')
