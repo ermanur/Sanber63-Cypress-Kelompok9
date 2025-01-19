@@ -1,5 +1,6 @@
 const createAccPageCy = require("../../support/pageObjectModel/createAccPage.cy")
 
+
 describe('Negative Scenario - Create an Account Scenario with fixtures', () => {
     beforeEach(() => {
         cy.visit('')

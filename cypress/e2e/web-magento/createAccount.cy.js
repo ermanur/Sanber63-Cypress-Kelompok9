@@ -1,7 +1,7 @@
 import createAccPageCy from "../../support/pageObjectModel/createAccPage.cy"
 
-describe('Magento Website - Create an Account Scenario', () => {
 
+describe('Magento Website - Create an Account Scenario', () => {
   function randomEmail(){
     const randomString = Math.random().toString(36).substring(2,9)
     const email = randomString + "@mail.com"

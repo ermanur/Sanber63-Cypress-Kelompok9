@@ -114,7 +114,7 @@ class createAccPage {
     verifyConfPass(missmatchPas){
         cy.get(this.error_confirmpw).should('have.text',missmatchPas)
     }
-
+    
 }
 
 module.exports = new createAccPage()

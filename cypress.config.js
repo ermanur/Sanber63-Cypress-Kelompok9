@@ -8,7 +8,7 @@ module.exports = defineConfig({
     //specPattern: 'cypress/e2e/web-magento/create*.cy.js',
     specPattern: 'cypress/e2e/web-magento/**.cy.js',
     screenshotOnRunFailure: false,
-    chromeWebSecurity: false,
+    //chromeWebSecurity: false,
     setupNodeEvents(on, config) {
       // implement node event listeners here
     },

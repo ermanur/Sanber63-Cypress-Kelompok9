@@ -51,6 +51,7 @@ function randomEmail(){
     cy.url().should('include',url)
 
   })
+  
 
     //Add to Cart (pre-cons of Proceed Checkout)
       Cypress.Commands.add('AddToCart', () => {
