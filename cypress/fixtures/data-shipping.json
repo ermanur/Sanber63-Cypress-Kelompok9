@@ -1,0 +1,14 @@
+{
+    "valid_emailaddress": "lalamariella@email.com",
+    "valid_firstname": "Lala",
+    "valid_lastname": "Mariella",
+    "valid_company": "PT Selalu Bisa",
+    "valid_streetaddress1": "Jl. Kencana Ungu",
+    "valid_streetaddress2": "Kec. Situbargi",
+    "valid_streetaddress3": "(Deket Indomaret)",
+    "valid_city": "Surabaya",
+    "valid_state": "Texas",
+    "valid_postcode": "12321",
+    "valid_country": "Indonesia",
+    "valid_phonenumber": "081232145678"
+}

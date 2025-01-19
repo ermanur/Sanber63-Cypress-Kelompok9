@@ -18,6 +18,12 @@ class Review_Payments {
     updateaddress_btn = '[data-bind="click: updateAddress"]'
     cancel_btn = '[class="action action-cancel"]'
     edit_btn = '[class="action action-edit-address"]'
+
+    applydiscountcode_btn = '[class="payment-option-title field choice"]'
+    discountcode = '#discount-code'
+    applydiscount_btn = '[class="action action-apply"]'
+    validate_invaliddiscount_alert = '[role="alert"]'
+    validate_invaliddiscount_msg = '[data-ui-id="checkout-cart-validationmessages-message-error"]'
 }
 
 module.exports = new Review_Payments()

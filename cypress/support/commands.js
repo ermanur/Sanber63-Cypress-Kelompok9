@@ -24,24 +24,6 @@
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
 
-// import detailPage from "../../support/element-pages/detailPage"
-
-// Cypress.Commands.add('addCart', (url) => { 
-//     // Visit item detail page
-//         cy.visit('https://magento.softwaretestingboard.com/radiant-tee.html')
-//         cy.wait(2000)
-//     // Pick size & color, click button Add to Cart
-//         cy.get(detailPage.size_picker).click()
-//         cy.get(detailPage.color_picker).click()
-//         cy.get(detailPage.addtocart_btn).click()
-//         cy.wait(2000)
-//     // Click cart, click button Proceed to Checkout
-//         cy.get(detailPage.cart).click()
-//         // cy.get(detailPage.proceedtocheckout_btn).should('have.text', 'Proceed to Checkout')
-//         cy.get(detailPage.proceedtocheckout_btn).click()
-//         cy.url().should('include', '/checkout/#shipping')
-//         cy.wait(5000)
-
 //Create Account
 function randomEmail(){
     const randomString = Math.random().toString(36).substring(2,9)
@@ -68,4 +50,34 @@ function randomEmail(){
   Cypress.Commands.add('VerifyURL', (url) => {
     cy.url().should('include',url)
 
+  })
+    })
+
+    //Add to Cart (pre-cons of Proceed Checkout)
+      Cypress.Commands.add('AddToCart', () => {
+        const detailPage = require('../../../Sanber63-Cypress-Kelompok9/cypress/support/element-pages/detailPage.js');
+      // Pick size & color, click button Add to Cart
+        cy.get(detailPage.size_picker).click()
+          .get(detailPage.color_picker).click()
+          .get(detailPage.addtocart_btn).click()
+          .wait(5000)
+      // Click cart, click button Proceed to Checkout
+          .get(detailPage.cart).click()
+    })
+
+    //Proceed Checkout - Inout field Shipping
+    Cypress.Commands.add('InputFieldsShipping', () => {
+      const Shipping = require('../../../Sanber63-Cypress-Kelompok9/cypress/support/element-pages/checkout-shippingPage.js');
+      cy.get(Shipping.emailaddress).type('lalamariella@email.com')
+        .get(Shipping.firstname).type('Lala')
+        .get(Shipping.lastname).type('Mariella')
+        .get(Shipping.company).type('PT Selalu Bisa')
+        .get(Shipping.streetaddress1).type('Jl. Kencana Ungu')
+        .get(Shipping.streetaddress2).type('Kec. Situbargi')
+        .get(Shipping.streetaddress3).type('(Deket Indomaret)')
+        .get(Shipping.city).type('Surabaya')
+        .get(Shipping.state).select('Texas')
+        .get(Shipping.postcode).type('12321')
+        .get(Shipping.country).select('United States')
+        .get(Shipping.phonenumber).type('081232145678')
   })
