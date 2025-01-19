@@ -5,7 +5,7 @@ module.exports = defineConfig({
     
     baseUrl: 'https://magento.softwaretestingboard.com/',
     browser: 'chrome',
-    specPattern: 'cypress/e2e/web-magento/create*.cy.js',
+    // specPattern: 'cypress/e2e/web-magento/create*.cy.js',
     screenshotOnRunFailure: false,
     chromeWebSecurity: false,
     setupNodeEvents(on, config) {
