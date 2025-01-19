@@ -1,6 +1,7 @@
 # Sanber63-Cypress-Kelompok9
 Sanber63-Cypress-Kelompok9
 
+
 Nama Lengkap - Nama github 
 1. 
 2. Geri Apta Maulana - gerimaulana
@@ -15,7 +16,5 @@ Pembagian Tugas
 - Create an Account (Malia)
 - Login (Geri)
 - My Account > Edit Account Information & Edit Address (Fanny)
-- Choose products and Update Shopping Cart (... , ...)
-- Proceed to Checkout (Salsabila , ...) 
 - Choose products and Update Shopping Cart (ghibran , ...)
 - Proceed to Checkout (Salsabila, ...)
