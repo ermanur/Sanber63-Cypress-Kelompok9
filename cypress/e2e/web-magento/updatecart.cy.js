@@ -1,4 +1,5 @@
-import addCartCy from "../../support/addCart/addCart"
+import customCommands from "../../support/pageObjectModeladdCart/custom-commands.js"
+import addCart from "../../support/pageObjectModeladdCart/addCart.js"
 describe('updatecart', () => {
  
   beforeEach('edit qty product',() => {
@@ -7,45 +8,45 @@ describe('updatecart', () => {
   })
   
   it('remove product',() => {
-    cy.get(':nth-child(4) > .item-actions > td > .actions-toolbar > .action-delete').click()
-    cy.get('.showcart > .counter').should('contain.text','1')
+    cy.get(addCart.delete_btl).click()
+    cy.get(addCart.cart).should('contain.text','1')
   })
 
   it('success edit qty',() => {
-    cy.get(':nth-child(4) > .item-actions > td > .actions-toolbar > .action-edit').click()
-    cy.get('#qty').clear().type(2)
-    cy.get('#product-updatecart-button > span').click()
-    cy.get('.message-success').should('contain.text','\n            Affirm Water Bottle  was updated in your shopping cart.\n        ')
+    cy.get(addCart.update_btl).click()
+    cy.get(addCart.qty).clear().type(2)
+    cy.get(addCart.update_btn).click()
+    cy.get(addCart.success_msg).should('contain.text','\n            Affirm Water Bottle  was updated in your shopping cart.\n        ')
   })
   it('failed edit qty',() => {
-    cy.get(':nth-child(4) > .item-actions > td > .actions-toolbar > .action-edit').click()
-    cy.get('#qty').clear().type(10000)
-    cy.get('#product-updatecart-button > span').click()
-    cy.get('.message-error').should('contain.text','The requested qty is not available')
+    cy.get(addCart.update_btl).click()
+    cy.get(addCart.qty).clear().type(10000)
+    cy.get(addCart.update_btn).click()
+    cy.get(addCart.error_msg).should('contain.text','The requested qty is not available')
   })
 
   it('success change color',() => {
-    cy.get(':nth-child(3) > .item-actions > td > .actions-toolbar > .action-edit').click()
-    cy.get('#option-label-color-93-item-56').click()
-    cy.get('#product-updatecart-button').click()
-    cy.get('.message-success').should('contain.text','Radiant Tee was updated in your shopping cart')
+    cy.get(addCart.update_tee).click()
+    cy.get(addCart.color).click()
+    cy.get(addCart.update_btn).click()
+    cy.get(addCart.success_msg).should('contain.text','Radiant Tee was updated in your shopping cart')
   })
   it('failed not choose color',() => {
-    cy.get(':nth-child(3) > .item-actions > td > .actions-toolbar > .action-edit').click()
-    cy.get('#option-label-color-93-item-50').click()
-    cy.get('#product-updatecart-button').click()
-    cy.get('div[id^="super_attribute\[93\]-error"]').should('contain.text','This is a required field')
+    cy.get(addCart.update_tee).click()
+    cy.get(addCart.color1).click()
+    cy.get(addCart.update_btn).click()
+    cy.get(addCart.errorMsgField).should('contain.text','This is a required field')
   })
   it('success change size',() => {
-    cy.get(':nth-child(3) > .item-actions > td > .actions-toolbar > .action-edit').click()
-    cy.get('#option-label-size-143-item-167').click()
-    cy.get('#product-updatecart-button').click()
-    cy.get('.message-success').should('contain.text','Radiant Tee was updated in your shopping cart')
+    cy.get(addCart.update_tee).click()
+    cy.get(addCart.size).click()
+    cy.get(addCart.update_btn).click()
+    cy.get(addCart.success_msg).should('contain.text','Radiant Tee was updated in your shopping cart')
   })
-  it.only('failed not choose size',() => {
-    cy.get(':nth-child(3) > .item-actions > td > .actions-toolbar > .action-edit').click()
-    cy.get('#option-label-size-143-item-166').click()
-    cy.get('#product-updatecart-button').click()
-    cy.get('div[id^="super_attribute\[143\]-error"]').should('contain.text','This is a required field')
+  it('failed not choose size',() => {
+    cy.get(addCart.update_tee).click()
+    cy.get(addCart.size1).click()
+    cy.get(addCart.update_btn).click()
+    cy.get(addCart.errorMsgSize).should('contain.text','This is a required field')
   })
 })

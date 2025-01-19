@@ -1,4 +1,4 @@
-class addcart{}
+class customCommand{}
 Cypress.Commands.add('addCart', (url) => {
     cy.visit('')
     cy.get(':nth-child(1) > .product-item-info > .product-item-photo > .product-image-container > .product-image-wrapper > .product-image-photo').click()
@@ -14,4 +14,5 @@ Cypress.Commands.add('addCart', (url) => {
     cy.get('.showcart').click()
     cy.get(':nth-child(7) > .secondary > .action > span').click()
 })
-module.exports = new addcart()
+
+module.exports = new customCommand()
