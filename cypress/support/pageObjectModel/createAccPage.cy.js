@@ -17,14 +17,18 @@ class createAccPage {
     error_pw = '#password-error'
     error_confirmpw = '#password-confirmation-error'
     registered_email = '.message-error > div'
+    invalid_email = '#email_address-error'
 
     clickCreatePage(){
         cy.get(this.createpage_btn).contains('Create an Account').click()
     }
 
+
     clickCreate(){
         cy.get(this.create_btn).click()
     }
+    
+    
 
     verifyWelcomeName(welcomeName){
         cy.get(this.welcome_name).should('have.text',welcomeName)
@@ -77,6 +81,38 @@ class createAccPage {
 
     verifyconfpassempty(confpassempty){
         cy.get(this.confirm_pass).should('be.empty')
+    }
+
+    inputFirstname(){
+        cy.get(this.firstname).type('Ana')
+    }
+
+    inputLasttname(){
+        cy.get(this.lastname).type('Rubina')
+    }
+
+    inputEmail(){
+        cy.get(this.email).type('iniemailnya$$')
+    }
+
+    inputPassword(){
+        cy.get(this.password).type('Sanbercode00')
+    }
+
+    confirmPassword(){
+        cy.get(this.confirm_pass).type('Sanbercode00')
+    }
+
+    verifyInvalidEmail(errorInvalidEmail){
+        cy.get(this.invalid_email).should('have.text', errorInvalidEmail)
+    }
+
+    verifyPassLevel(passlvl){
+        cy.get(this.pass_level).contains(passlvl)
+    }
+
+    verifyConfPass(missmatchPas){
+        cy.get(this.error_confirmpw).should('have.text',missmatchPas)
     }
 
 }
