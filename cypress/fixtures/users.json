@@ -21,17 +21,33 @@
     },
     
     {
-        "firstname": "@n4",
-        "lastname": "Rub!n@",
-        "password": "Sanbercode00",
-        "confirm_pass": "Sanbercode00"
+        "firstname": "Ana",
+        "lastname": "Rubina",
+        "password": "@s",
+        "confirm_pass": "@s"
     },
 
     {
-        "firstname": "",
-        "lastname": "Rub!n@",
+        "firstname": "Ana",
+        "lastname": "Rubina",
+        "password": " Sanber ",
+        "confirm_pass": " Sanber "
+    },
+
+    {
+        "firstname": "Ana",
+        "lastname": "Rubina",
+        "password": "123456789",
+        "confirm_pass": "123456789"
+    },
+
+    {
+        "firstname": "Ana",
+        "lastname": "Rubina",
         "password": "Sanbercode00",
-        "confirm_pass": "Sanbercode00"
+        "confirm_pass": "Sanbercode123"
     }
+    
+    
   ]
   

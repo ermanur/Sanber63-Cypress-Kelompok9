@@ -29,8 +29,9 @@ function randomEmail(){
     const randomString = Math.random().toString(36).substring(2,9)
     const email = randomString + "@mail.com"
     return email
-  }
-Cypress.Commands.add('CreateAccount', (firstname, lastname, password, confirm_pass) => {
+}
+  
+  Cypress.Commands.add('CreateAccount', (firstname, lastname, password, confirm_pass) => {
     let useremail = randomEmail()
     cy.get('.panel.wrapper > .panel').contains('Create an Account').click()
     cy.get('#firstname').type(firstname)
@@ -39,7 +40,18 @@ Cypress.Commands.add('CreateAccount', (firstname, lastname, password, confirm_pa
     cy.get('#password').type(password)
     cy.get('#password-confirmation').type(confirm_pass)
     cy.get('#form-validate > .actions-toolbar > div.primary > .action').click()
-    })
+  })
+
+  Cypress.Commands.add('VerifyError', (message) => {
+    cy.get('.message-error > div').should('have.text', message)
+
+  })
+  
+  Cypress.Commands.add('VerifyURL', (url) => {
+    cy.url().should('include',url)
+
+  })
+  
 
     //Add to Cart (pre-cons of Proceed Checkout)
       Cypress.Commands.add('AddToCart', () => {

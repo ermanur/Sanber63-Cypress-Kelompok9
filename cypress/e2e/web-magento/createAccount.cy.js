@@ -1,7 +1,7 @@
 import createAccPageCy from "../../support/pageObjectModel/createAccPage.cy"
 
-describe('Magento Website - Create an Account Scenario', () => {
 
+describe('Magento Website - Create an Account Scenario', () => {
   function randomEmail(){
     const randomString = Math.random().toString(36).substring(2,9)
     const email = randomString + "@mail.com"
@@ -18,30 +18,35 @@ describe('Magento Website - Create an Account Scenario', () => {
     cy.CreateAccount('Ana','Rubina','Sanbercode00','Sanbercode00')
     createAccPageCy.verifyWelcomeName('Welcome, Ana Rubina!')
     createAccPageCy.verifyWelcomeText('Thank you for registering with Main Website Store.')
+    cy.VerifyURL('customer/account')
   })
 
   it('Create an Account success with number in firstname ', () => {
     cy.CreateAccount('1998000','Rubina','Sanbercode00','Sanbercode00')
     createAccPageCy.verifyWelcomeName('Welcome, 1998000 Rubina!')
     createAccPageCy.verifyWelcomeText('Thank you for registering with Main Website Store.')
+    cy.VerifyURL('customer/account')
   })
 
   it('Create an Account success with mix alphabet & number in firstname ', () => {
     cy.CreateAccount('Ana1998','Rubina','Sanbercode00','Sanbercode00')
     createAccPageCy.verifyWelcomeName('Welcome, Ana1998 Rubina!')
     createAccPageCy.verifyWelcomeText('Thank you for registering with Main Website Store.')
+    cy.VerifyURL('customer/account')
   })
 
   it('Create an Account success with number in lastname ', () => {
     cy.CreateAccount('Ana','15045','Sanbercode00','Sanbercode00')
     createAccPageCy.verifyWelcomeName('Welcome, Ana 15045!')
     createAccPageCy.verifyWelcomeText('Thank you for registering with Main Website Store.')
+    cy.VerifyURL('customer/account')
   })
 
   it('Create an Account success with mix alphabet & number in lastname ', () => {
     cy.CreateAccount('Ana','Rubina20','Sanbercode00','Sanbercode00')
     createAccPageCy.verifyWelcomeName('Welcome, Ana Rubina20!')
     createAccPageCy.verifyWelcomeText('Thank you for registering with Main Website Store.')
+    cy.VerifyURL('customer/account')
   })
 
   it('Create an Account success with spaces in the middle character of password ', () => {
@@ -52,9 +57,10 @@ describe('Magento Website - Create an Account Scenario', () => {
     cy.get('#password').type('Sa n ber')
     cy.get('#password-strength-meter').contains('Password Strength: Medium')
     cy.get('#password-confirmation').type('Sa n ber')
-    cy.get('#form-validate > .actions-toolbar > div.primary > .action').click()
+    createAccPageCy.clickCreate()
     cy.get(':nth-child(2) > .greet > .logged-in').should('have.text', 'Welcome, Ana Rubina!' )
     cy.get('.message-success > div').should('have.text','Thank you for registering with Main Website Store.')
+    cy.VerifyURL('customer/account')
   })
 
 
@@ -66,7 +72,7 @@ describe('Magento Website - Create an Account Scenario', () => {
     cy.get('#email_address').type(useremail)
     cy.get('#password').type('Sanbercode00')
     cy.get('#password-confirmation').type('Sanbercode00')
-    cy.get('#form-validate > .actions-toolbar > div.primary > .action').click()
+    createAccPageCy.clickCreate()
     cy.get('#firstname-error').should('have.text', 'This is a required field.')
 
    })
@@ -77,18 +83,18 @@ describe('Magento Website - Create an Account Scenario', () => {
     cy.get('#email_address').type(useremail)
     cy.get('#password').type('Sanbercode00')
     cy.get('#password-confirmation').type('Sanbercode00')
-    cy.get('#form-validate > .actions-toolbar > div.primary > .action').click()
+    createAccPageCy.clickCreate()
     cy.get('#lastname-error').should('have.text', 'This is a required field.')
   })
 
   it('Create an Account failed with invalid email', () => {
-    cy.get('#firstname').type('Ana')
-    cy.get('#lastname').type('Rubina')
-    cy.get('#email_address').type('iniemailnya$$')
-    cy.get('#password').type('Sanbercode00')
-    cy.get('#password-confirmation').type('Sanbercode00')
-    cy.get('#form-validate > .actions-toolbar > div.primary > .action').click()
-    cy.get('#email_address-error').should('have.text', 'Please enter a valid email address (Ex: johndoe@domain.com).')
+    createAccPageCy.inputFirstname()
+    createAccPageCy.inputLasttname()
+    createAccPageCy.inputEmail()
+    createAccPageCy.inputPassword()
+    createAccPageCy.confirmPassword()
+    createAccPageCy.clickCreate()
+    createAccPageCy.verifyInvalidEmail('Please enter a valid email address (Ex: johndoe@domain.com).')
 
   })
 
@@ -97,52 +103,8 @@ describe('Magento Website - Create an Account Scenario', () => {
     cy.get('#lastname').type('Rubina')
     cy.get('#password').type('Sanbercode00')
     cy.get('#password-confirmation').type('Sanbercode00')
-    cy.get('#form-validate > .actions-toolbar > div.primary > .action').click()
+    createAccPageCy.clickCreate()
     cy.get('#email_address-error').should('have.text', 'This is a required field.')
-
-  })
-
-  it('Create an Account failed with password length less than 8', () => {
-    let useremail = randomEmail()
-    cy.get('#firstname').type('Ana')
-    cy.get('#lastname').type('Rubina')
-    cy.get('#email_address').type(useremail)
-    // cy.get('#password').type('S')
-    // cy.get('#password-confirmation').type('S')
-    // cy.get('#password-strength-meter').contains('Password Strength: Weak')
-    cy.get('#password').type('@')
-    cy.get('#password-strength-meter').contains('Password Strength: Weak')
-    cy.get('#password-confirmation').type('@')
-    cy.get('#password-error').should('have.text', 'Minimum length of this field must be equal or greater than 8 symbols. Leading and trailing spaces will be ignored.')
-    cy.get('#form-validate > .actions-toolbar > div.primary > .action').click()
-  
-
-  })
-
-  it('Create an Account failed with leading and trailing spaces', () => {
-    let useremail = randomEmail()
-    cy.get('#firstname').type('Ana')
-    cy.get('#lastname').type('Rubina')
-    cy.get('#email_address').type(useremail)
-    cy.get('#password').type(' Sanber ')
-    cy.get('#password-strength-meter').contains('Password Strength: Weak')
-    cy.get('#password-confirmation').type(' Sanber ')
-    cy.get('#password-error').should('have.text', 'Minimum length of this field must be equal or greater than 8 symbols. Leading and trailing spaces will be ignored.')
-    cy.get('#form-validate > .actions-toolbar > div.primary > .action').click()
-
-
-  })
-
-  it('Create an Account failed if password just have 1 character', () => {
-    let useremail = randomEmail()
-    cy.get('#firstname').type('Ana')
-    cy.get('#lastname').type('Rubina')
-    cy.get('#email_address').type(useremail)
-    cy.get('#password').type('123456789')
-    cy.get('#password-strength-meter').contains('Password Strength: Weak')
-    cy.get('#password-error').should('have.text', 'Minimum of different classes of characters in password is 3. Classes of characters: Lower Case, Upper Case, Digits, Special Characters.')
-    cy.get('#password-confirmation').type('123456789')
-    cy.get('#form-validate > .actions-toolbar > div.primary > .action').click()
 
   })
 
@@ -152,10 +114,10 @@ describe('Magento Website - Create an Account Scenario', () => {
     cy.get('#lastname').type('Rubina')
     cy.get('#email_address').type(useremail)
     cy.get('#password').type('ABC123456')
-    cy.get('#password-strength-meter').contains('Password Strength: Weak')
-    cy.get('#password-error').should('have.text', 'Minimum of different classes of characters in password is 3. Classes of characters: Lower Case, Upper Case, Digits, Special Characters.')
+    createAccPageCy.verifyPassLevel('Password Strength: Weak')
+    createAccPageCy.verifypassword('Minimum of different classes of characters in password is 3. Classes of characters: Lower Case, Upper Case, Digits, Special Characters.')
     cy.get('#password-confirmation').type('ABC123456')
-    cy.get('#form-validate > .actions-toolbar > div.primary > .action').click()
+    createAccPageCy.clickCreate()
   })
 
 
@@ -165,22 +127,10 @@ it('Create an Account failed with empty password', () => {
     cy.get('#lastname').type('Rubina')
     cy.get('#email_address').type(useremail)
     cy.get('#password-confirmation').type('Sanbercode00')
-    cy.get('#form-validate > .actions-toolbar > div.primary > .action').click()
+    createAccPageCy.clickCreate()
     cy.get('#password-error').should('have.text', 'This is a required field.')
     cy.get('#password-confirmation-error').should('have.text', 'Please enter the same value again.')
 
-  })
-
-  it('Create an Accoun failed with missmatch password', () => {
-    let useremail = randomEmail()
-    cy.get('#firstname').type('Ana')
-    cy.get('#lastname').type('Rubina')
-    cy.get('#email_address').type(useremail)
-    cy.get('#password').type('Sanbercode00')
-    cy.get('#password-confirmation').type('Sanbercode123')
-    cy.get('#form-validate > .actions-toolbar > div.primary > .action').click()
-    cy.get('#password-confirmation-error').should('have.text', 'Please enter the same value again.')
-    
   })
 
   it('Create an Accoun failed with empty confirm password', () => {
@@ -189,7 +139,7 @@ it('Create an Account failed with empty password', () => {
     cy.get('#lastname').type('Rubina')
     cy.get('#email_address').type(useremail)
     cy.get('#password').type('Sanbercode00')
-    cy.get('#form-validate > .actions-toolbar > div.primary > .action').click()
+    createAccPageCy.clickCreate()
     cy.get('#password-confirmation-error').should('have.text', 'This is a required field.')
 
   })
@@ -200,8 +150,8 @@ it('Create an Account failed with empty password', () => {
     cy.get('#email_address').type('maliyaiueo@gmail.com')
     cy.get('#password').type('Sanbercode123')
     cy.get('#password-confirmation').type('Sanbercode123')
-    cy.get('#form-validate > .actions-toolbar > div.primary > .action').click()
-    cy.get('.message-error > div').should('have.text','There is already an account with this email address. If you are sure that it is your email address, click here to get your password and access your account.')
+    createAccPageCy.clickCreate()
+    cy.VerifyError('There is already an account with this email address. If you are sure that it is your email address, click here to get your password and access your account.')
     cy.get('#password').should('be.empty')
     cy.get('#password-confirmation').should('be.empty')
 
