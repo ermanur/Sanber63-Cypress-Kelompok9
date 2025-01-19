@@ -1,4 +1,6 @@
 class Shipping {
+    shipping_section = '#shipping'
+
     emailaddress = '#customer-email'
     firstname = '[name="firstname"]'
     lastname = '[name="lastname"]'
@@ -19,5 +21,19 @@ class Shipping {
     haveaccount_msg = '[class="note"]'
     haveaccount_login_btn = '[data-action="checkout-method-login"]'
     validate_newaddress_btn = '[data-bind="click: showFormPopUp, visible: !isNewAddressAdded()"]'
+
+    validate_emptyemail_msg = '#customer-email-error'
+    validate_emptyfirstname_msg = '[data-bind="text: element.error"]'
+    validate_emptylastname_msg = '[class="field-error"]'
+    validate_emptystreetaddress_msg = '[data-bind="text: element.error"]'
+    validate_emptycity_msg = '[data-bind="text: element.error"]'
+    validate_emptystate_msg = '[data-bind="text: element.error"]'
+    validate_emptypostcode_msg = '[data-bind="text: element.error"]'
+    validate_emptycountry_msg = '[data-bind="text: element.error"]'
+    validate_emptyphonenumber_msg = '[data-bind="text: element.error"]'
+    validate_emptyship_alert = '[class="message notice"]'
+    validate_emptyship_msg = '[data-bind="text: errorValidationMessage()"]'
+
+    validate_invalidpostalcode_msg = '[data-bind="text: element.warn"]'
 }
 module.exports = new Shipping()
