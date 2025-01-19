@@ -1,4 +1,5 @@
 class createAccPage {
+    createpage_btn ='.panel.wrapper > .panel'
     firstname = '#firstname'
     lastname = '#lastname'
     email = '#email_address'
@@ -9,12 +10,17 @@ class createAccPage {
     welcome_text = '.message-success > div'
     pass_level = '#password-strength-meter'
     error_msg = '.message-error'
+    error_msge = '.message-error'
     error_fn = '#firstname-error'
     error_ln = '#lastname-error'
     error_email = '#email_address-error'
     error_pw = '#password-error'
     error_confirmpw = '#password-confirmation-error'
     registered_email = '.message-error > div'
+
+    clickCreatePage(){
+        cy.get(this.createpage_btn).contains('Create an Account').click()
+    }
 
     clickCreate(){
         cy.get(this.create_btn).click()
@@ -34,7 +40,11 @@ class createAccPage {
     }
 
     verifyErrormsg(errormsg){
-        cy.get(this.error_msg).should('contain',errormsg)
+        cy.get(this.error_msg).should('contain.text',errormsg)
+    }
+
+    verifyErrormsge(errormsge){
+        cy.get(this.error_msge).contains(errormsge)
     }
 
     verifyfirstname(errorFn){

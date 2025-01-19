@@ -1,0 +1,37 @@
+[
+    {
+        "firstname": "@n4",
+        "lastname": "Rubina",
+        "password": "Sanbercode00",
+        "confirm_pass": "Sanbercode00"
+    },
+
+    {
+        "firstname": "Ana",
+        "lastname": "Rub!n@",
+        "password": "Sanbercode00",
+        "confirm_pass": "Sanbercode00"
+    },
+
+    {
+        "firstname": "@n4",
+        "lastname": "Rub!n@",
+        "password": "Sanbercode00",
+        "confirm_pass": "Sanbercode00"
+    },
+    
+    {
+        "firstname": "@n4",
+        "lastname": "Rub!n@",
+        "password": "Sanbercode00",
+        "confirm_pass": "Sanbercode00"
+    },
+
+    {
+        "firstname": "",
+        "lastname": "Rub!n@",
+        "password": "Sanbercode00",
+        "confirm_pass": "Sanbercode00"
+    }
+  ]
+  

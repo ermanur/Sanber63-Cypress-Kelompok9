@@ -2,15 +2,15 @@ import createAccPageCy from "../../support/pageObjectModel/createAccPage.cy"
 
 describe('Magento Website - Create an Account Scenario', () => {
 
-  // function randomEmail(){
-  //   const randomString = Math.random().toString(36).substring(2,9)
-  //   const email = randomString + "@mail.com"
-  //   return email
-  // }
+  function randomEmail(){
+    const randomString = Math.random().toString(36).substring(2,9)
+    const email = randomString + "@mail.com"
+    return email
+  }
 
   beforeEach(() => {
     cy.visit('')
-    cy.get('.panel.wrapper > .panel').contains('Create an Account').click()
+    createAccPageCy.clickCreatePage()
   })
 
   //Positive Test
@@ -46,7 +46,6 @@ describe('Magento Website - Create an Account Scenario', () => {
 
   it('Create an Account success with spaces in the middle character of password ', () => {
     let useremail = randomEmail()
-    cy.get('.panel.wrapper > .panel').contains('Create an Account').click()
     cy.get('#firstname').type('Ana')
     cy.get('#lastname').type('Rubina')
     cy.get('#email_address').type(useremail)
@@ -59,46 +58,7 @@ describe('Magento Website - Create an Account Scenario', () => {
   })
 
 
-//Negative Test
-  it('Create an Account failed with symbol in firstname ', () => {
-    let useremail = randomEmail()
-    cy.get('.panel.wrapper > .panel').contains('Create an Account').click()
-    cy.get('#firstname').type('@n4')
-    cy.get('#lastname').type('Rubina')
-    cy.get('#email_address').type(useremail)
-    cy.get('#password').type('Sanbercode00')
-    cy.get('#password-confirmation').type('Sanbercode00')
-    cy.get('#form-validate > .actions-toolbar > div.primary > .action').click()
-    cy.get('.message-error').should('contain', 'First Name is not valid!' )
-
-  })
-
-  it('Create an Account failed with symbol in lastname ', () => {
-    let useremail = randomEmail()
-    cy.get('.panel.wrapper > .panel').contains('Create an Account').click()
-    cy.get('#firstname').type('Ana')
-    cy.get('#lastname').type('Rub!n@')
-    cy.get('#email_address').type(useremail)
-    cy.get('#password').type('Sanbercode00')
-    cy.get('#password-confirmation').type('Sanbercode00')
-    cy.get('#form-validate > .actions-toolbar > div.primary > .action').click()
-    cy.get('.message-error').should('contain', 'Last Name is not valid!' )
-    
-  })
-
-  it('Create an Account failed with symbol in firstname & lastname ', () => {
-    let useremail = randomEmail()
-    cy.get('.panel.wrapper > .panel').contains('Create an Account').click()
-    cy.get('#firstname').type('@n4')
-    cy.get('#lastname').type('Rub!n@')
-    cy.get('#email_address').type(useremail)
-    cy.get('#password').type('Sanbercode00')
-    cy.get('#password-confirmation').type('Sanbercode00')
-    cy.get('#form-validate > .actions-toolbar > div.primary > .action').click()
-    cy.get('.message-error').contains('First Name is not valid! Last Name is not valid!' )
-    
-  })
-
+//Negative Test without fixtures
   it('Create an Account failed with empty firstname ', () => {
     let useremail = randomEmail()
     cy.get('.panel.wrapper > .panel').contains('Create an Account').click()
@@ -113,7 +73,6 @@ describe('Magento Website - Create an Account Scenario', () => {
 
   it('Create an Account failed with empty lastname', () => {
     let useremail = randomEmail()
-    cy.get('.panel.wrapper > .panel').contains('Create an Account').click()
     cy.get('#firstname').type('Ana')
     cy.get('#email_address').type(useremail)
     cy.get('#password').type('Sanbercode00')
@@ -123,7 +82,6 @@ describe('Magento Website - Create an Account Scenario', () => {
   })
 
   it('Create an Account failed with invalid email', () => {
-    cy.get('.panel.wrapper > .panel').contains('Create an Account').click()
     cy.get('#firstname').type('Ana')
     cy.get('#lastname').type('Rubina')
     cy.get('#email_address').type('iniemailnya$$')
@@ -135,7 +93,6 @@ describe('Magento Website - Create an Account Scenario', () => {
   })
 
   it('Create an Account failed with empty email', () => {
-    cy.get('.panel.wrapper > .panel').contains('Create an Account').click()
     cy.get('#firstname').type('Ana')
     cy.get('#lastname').type('Rubina')
     cy.get('#password').type('Sanbercode00')
@@ -147,7 +104,6 @@ describe('Magento Website - Create an Account Scenario', () => {
 
   it('Create an Account failed with password length less than 8', () => {
     let useremail = randomEmail()
-    cy.get('.panel.wrapper > .panel').contains('Create an Account').click()
     cy.get('#firstname').type('Ana')
     cy.get('#lastname').type('Rubina')
     cy.get('#email_address').type(useremail)
@@ -165,7 +121,6 @@ describe('Magento Website - Create an Account Scenario', () => {
 
   it('Create an Account failed with leading and trailing spaces', () => {
     let useremail = randomEmail()
-    cy.get('.panel.wrapper > .panel').contains('Create an Account').click()
     cy.get('#firstname').type('Ana')
     cy.get('#lastname').type('Rubina')
     cy.get('#email_address').type(useremail)
@@ -180,7 +135,6 @@ describe('Magento Website - Create an Account Scenario', () => {
 
   it('Create an Account failed if password just have 1 character', () => {
     let useremail = randomEmail()
-    cy.get('.panel.wrapper > .panel').contains('Create an Account').click()
     cy.get('#firstname').type('Ana')
     cy.get('#lastname').type('Rubina')
     cy.get('#email_address').type(useremail)
@@ -194,7 +148,6 @@ describe('Magento Website - Create an Account Scenario', () => {
 
   it('Create an Account failed if password just have 2 character', () => {
     let useremail = randomEmail()
-    cy.get('.panel.wrapper > .panel').contains('Create an Account').click()
     cy.get('#firstname').type('Ana')
     cy.get('#lastname').type('Rubina')
     cy.get('#email_address').type(useremail)
@@ -208,7 +161,6 @@ describe('Magento Website - Create an Account Scenario', () => {
 
 it('Create an Account failed with empty password', () => {
     let useremail = randomEmail()
-    cy.get('.panel.wrapper > .panel').contains('Create an Account').click()
     cy.get('#firstname').type('Ana')
     cy.get('#lastname').type('Rubina')
     cy.get('#email_address').type(useremail)
@@ -221,7 +173,6 @@ it('Create an Account failed with empty password', () => {
 
   it('Create an Accoun failed with missmatch password', () => {
     let useremail = randomEmail()
-    cy.get('.panel.wrapper > .panel').contains('Create an Account').click()
     cy.get('#firstname').type('Ana')
     cy.get('#lastname').type('Rubina')
     cy.get('#email_address').type(useremail)
@@ -234,7 +185,6 @@ it('Create an Account failed with empty password', () => {
 
   it('Create an Accoun failed with empty confirm password', () => {
     let useremail = randomEmail()
-    cy.get('.panel.wrapper > .panel').contains('Create an Account').click()
     cy.get('#firstname').type('Ana')
     cy.get('#lastname').type('Rubina')
     cy.get('#email_address').type(useremail)
@@ -245,7 +195,6 @@ it('Create an Account failed with empty password', () => {
   })
 
   it('Create an Accoun with the same email is not allowed ', () => {
-    cy.get('.panel.wrapper > .panel').contains('Create an Account').click()
     cy.get('#firstname').type('Ana')
     cy.get('#lastname').type('Rubina')
     cy.get('#email_address').type('maliyaiueo@gmail.com')
@@ -261,7 +210,6 @@ it('Create an Account failed with empty password', () => {
   // //Verify Password Strange
   // it('Password Strange got Weak label if 3 char for 3 letters and 5 numbers/symbol', () => {
   //   let useremail = randomEmail()
-  //   cy.get('.panel.wrapper > .panel').contains('Create an Account').click()
   //   cy.get('#firstname').type('Ana')
   //   cy.get('#lastname').type('Rubina')
   //   cy.get('#email_address').type(useremail)
@@ -272,7 +220,6 @@ it('Create an Account failed with empty password', () => {
 
   // it('Password Strange got Medium label if 3 char for 4 letters and 4 numbers/symbols', () => {
   //   let useremail = randomEmail()
-  //   cy.get('.panel.wrapper > .panel').contains('Create an Account').click()
   //   cy.get('#firstname').type('Ana')
   //   cy.get('#lastname').type('Rubina')
   //   cy.get('#email_address').type(useremail)
@@ -283,7 +230,6 @@ it('Create an Account failed with empty password', () => {
 
   // it('Password Strange got Medium label with use 4 character with length equal to 8', () => {
   //   let useremail = randomEmail()
-  //   cy.get('.panel.wrapper > .panel').contains('Create an Account').click()
   //   cy.get('#firstname').type('Ana')
   //   cy.get('#lastname').type('Rubina')
   //   cy.get('#email_address').type(useremail)
@@ -294,7 +240,6 @@ it('Create an Account failed with empty password', () => {
 
   // it('Password Strange got Strong label with use 3 char for 6 letters & 6 symbol/number ', () => {
   //   let useremail = randomEmail()
-  //   cy.get('.panel.wrapper > .panel').contains('Create an Account').click()
   //   cy.get('#firstname').type('Ana')
   //   cy.get('#lastname').type('Rubina')
   //   cy.get('#email_address').type(useremail)
@@ -305,7 +250,6 @@ it('Create an Account failed with empty password', () => {
 
   // it('Password Strange got Strong label with use 4 character with length 9-10', () => {
   //   let useremail = randomEmail()
-  //   cy.get('.panel.wrapper > .panel').contains('Create an Account').click()
   //   cy.get('#firstname').type('Ana')
   //   cy.get('#lastname').type('Rubina')
   //   cy.get('#email_address').type(useremail)
@@ -316,7 +260,6 @@ it('Create an Account failed with empty password', () => {
 
   // it('Password Strange got Very Strong label with use 3 char more than 8 letters and symbol/number ', () => {
   //   let useremail = randomEmail()
-  //   cy.get('.panel.wrapper > .panel').contains('Create an Account').click()
   //   cy.get('#firstname').type('Ana')
   //   cy.get('#lastname').type('Rubina')
   //   cy.get('#email_address').type(useremail)
@@ -327,7 +270,6 @@ it('Create an Account failed with empty password', () => {
 
   // it('Password Strange got Very Strong label with use 4 character with 6 letter and 5 letter/symbol',() => {
   //   let useremail = randomEmail()
-  //   cy.get('.panel.wrapper > .panel').contains('Create an Account').click()
   //   cy.get('#firstname').type('Ana')
   //   cy.get('#lastname').type('Rubina')
   //   cy.get('#email_address').type(useremail)
